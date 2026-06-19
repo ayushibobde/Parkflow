@@ -1,155 +1,245 @@
-import { useEffect, useState } from "react";
 import {
   AlertTriangle,
-  Building2,
-  Car,
-  MapPin,
-  RefreshCw,
+  ArrowRight,
+  CarFront,
+  Gauge,
+  ParkingCircleOff,
+  Radio,
 } from "lucide-react";
-import { parkFlowApi } from "../services/api";
-import "./Dashboard.css";
-interface DashboardData {
-  totalViolations: number;
-  topStation: [string, number];
-  topVehicle: [string, number];
-  topViolation: [string, number];
-}
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import IncidentTable from "../components/IncidentTable";
+import MetricCard from "../components/MetricCard";
+import { incidents } from "../data/incidents";
 
-interface Hotspot {
-  location: string;
-  policeStation: string;
-  latitude: string;
-  longitude: string;
-  violations: number;
-}
+const chartData = incidents.map((incident) => ({
+  location: incident.location
+    .replace("Central ", "")
+    .replace("Commercial ", "")
+    .replace(" Main Entrance", "")
+    .replace(" Junction", "")
+    .replace(" Zone", ""),
+  score: incident.impactScore,
+  illegalVehicles: incident.illegalVehicles,
+}));
 
 function Dashboard() {
-  const [dashboard, setDashboard] =
-    useState<DashboardData | null>(null);
+  const criticalHotspots = incidents.filter(
+    (incident) => incident.priority === "Critical",
+  ).length;
 
-  const [hotspots, setHotspots] = useState<Hotspot[]>([]);
+  const totalIllegalVehicles = incidents.reduce(
+    (total, incident) => total + incident.illegalVehicles,
+    0,
+  );
 
-  const [loading, setLoading] = useState(true);
+  const averageSpeedReduction = Math.round(
+    incidents.reduce((total, incident) => {
+      const reduction =
+        ((incident.baselineSpeed - incident.currentSpeed) /
+          incident.baselineSpeed) *
+        100;
 
-  const loadData = async () => {
-    try {
-      setLoading(true);
+      return total + reduction;
+    }, 0) / incidents.length,
+  );
 
-      const dashboardData =
-        await parkFlowApi.getDashboardAnalytics();
-
-      const hotspotData =
-        await parkFlowApi.getHotspots();
-
-      setDashboard(dashboardData as DashboardData);
-      setHotspots(Array.isArray(hotspotData) ? hotspotData : []);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    void loadData();
-  }, []);
-
-  if (loading) {
-    return (
-      <main className="dashboard-page">
-        <h2>Loading Dashboard...</h2>
-      </main>
-    );
-  }
+  const averageLaneBlockage = Math.round(
+    incidents.reduce(
+      (total, incident) => total + incident.laneBlockagePercent,
+      0,
+    ) / incidents.length,
+  );
 
   return (
     <main className="dashboard-page">
       <header className="dashboard-header">
         <div>
-          <h1>ParkFlow AI Dashboard</h1>
-          <p>
-            Real-time parking intelligence powered by
-            violation analytics.
+          <p className="dashboard-header__eyebrow">
+            Traffic Enforcement Command Centre
+          </p>
+
+          <h2>Parking Congestion Dashboard</h2>
+
+          <p className="dashboard-header__description">
+            Monitor illegal-parking hotspots and prioritize enforcement using
+            congestion-impact intelligence.
           </p>
         </div>
 
-        <button onClick={() => void loadData()}>
-          <RefreshCw size={16} />
-          Refresh
-        </button>
+        <div className="dashboard-header__actions">
+          <div className="live-indicator">
+            <Radio size={16} />
+            Live monitoring
+          </div>
+
+          <button className="primary-button" type="button">
+            Analyse CCTV Feed
+            <ArrowRight size={17} />
+          </button>
+        </div>
       </header>
 
-      <section className="dashboard-metrics-grid">
+      <section className="metrics-grid">
+        <MetricCard
+          title="Active Incidents"
+          value={incidents.filter((item) => item.status !== "Cleared").length}
+          description="Currently requiring action"
+          trend="+2 today"
+          icon={ParkingCircleOff}
+        />
 
-        <article className="dashboard-metric-card">
-          <AlertTriangle size={24} />
-          <span>Total Violations</span>
-          <strong>
-            {dashboard?.totalViolations.toLocaleString()}
-          </strong>
+        <MetricCard
+          title="Critical Hotspots"
+          value={criticalHotspots}
+          description="Immediate enforcement required"
+          trend="Priority alert"
+          icon={AlertTriangle}
+        />
+
+        <MetricCard
+          title="Illegal Vehicles"
+          value={totalIllegalVehicles}
+          description="Detected across monitored zones"
+          trend="+7 this hour"
+          icon={CarFront}
+        />
+
+        <MetricCard
+          title="Average Speed Loss"
+          value={`${averageSpeedReduction}%`}
+          description={`${averageLaneBlockage}% average lane blockage`}
+          trend="Across hotspots"
+          icon={Gauge}
+        />
+      </section>
+
+      <section className="dashboard-content-grid">
+        <article className="dashboard-panel dashboard-panel--chart">
+          <div className="panel-header">
+            <div>
+              <h3>Congestion Impact by Location</h3>
+              <p>AI-generated impact score from 0 to 100</p>
+            </div>
+
+            <select className="dashboard-select" defaultValue="today">
+              <option value="today">Today</option>
+              <option value="week">This week</option>
+              <option value="month">This month</option>
+            </select>
+          </div>
+
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={chartData}
+                margin={{
+                  top: 10,
+                  right: 10,
+                  left: -20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                <XAxis
+                  dataKey="location"
+                  tickLine={false}
+                  axisLine={false}
+                  fontSize={12}
+                />
+
+                <YAxis
+                  domain={[0, 100]}
+                  tickLine={false}
+                  axisLine={false}
+                  fontSize={12}
+                />
+
+                <Tooltip
+                  cursor={{ fill: "rgba(15, 23, 42, 0.04)" }}
+                  contentStyle={{
+                    borderRadius: "12px",
+                    border: "1px solid #e2e8f0",
+                  }}
+                />
+
+                <Bar
+                  dataKey="score"
+                  name="Impact Score"
+                  fill="#2563eb"
+                  radius={[8, 8, 0, 0]}
+                  maxBarSize={48}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </article>
 
-        <article className="dashboard-metric-card">
-          <Building2 size={24} />
-          <span>Top Police Station</span>
-          <strong>
-            {dashboard?.topStation?.[0]}
-          </strong>
-          <small>
-            {dashboard?.topStation?.[1]} violations
-          </small>
-        </article>
+        <article className="dashboard-panel">
+          <div className="panel-header">
+            <div>
+              <h3>Enforcement Priority</h3>
+              <p>Recommended actions for highest-impact zones</p>
+            </div>
+          </div>
 
-        <article className="dashboard-metric-card">
-          <Car size={24} />
-          <span>Top Vehicle Type</span>
-          <strong>
-            {dashboard?.topVehicle?.[0]}
-          </strong>
-          <small>
-            {dashboard?.topVehicle?.[1]} violations
-          </small>
-        </article>
+          <div className="priority-list">
+            {incidents.slice(0, 3).map((incident, index) => (
+              <div className="priority-list__item" key={incident.id}>
+                <div className="priority-list__rank">{index + 1}</div>
 
-        <article className="dashboard-metric-card">
-          <MapPin size={24} />
-          <span>Top Violation</span>
-          <strong>
-            {dashboard?.topViolation?.[0]}
-          </strong>
-          <small>
-            {dashboard?.topViolation?.[1]} records
-          </small>
-        </article>
+                <div className="priority-list__content">
+                  <div className="priority-list__heading">
+                    <strong>{incident.location}</strong>
+                    <span>{incident.impactScore}</span>
+                  </div>
 
+                  <p>
+                    {incident.illegalVehicles} illegally parked vehicles ·{" "}
+                    {incident.laneBlockagePercent}% lane blockage
+                  </p>
+
+                  <div className="priority-list__recommendation">
+                    {incident.priority === "Critical"
+                      ? "Deploy towing vehicle and 3 officers"
+                      : incident.priority === "High"
+                        ? "Deploy 2 enforcement officers"
+                        : "Continue camera monitoring"}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button className="secondary-button" type="button">
+            Open enforcement planner
+            <ArrowRight size={16} />
+          </button>
+        </article>
       </section>
 
       <section className="dashboard-panel">
-        <div className="dashboard-panel__header">
-          <h2>Top 20 Parking Hotspots</h2>
+        <div className="panel-header">
+          <div>
+            <h3>Recent Parking Incidents</h3>
+            <p>Latest incidents detected from connected CCTV cameras</p>
+          </div>
+
+          <button className="text-button" type="button">
+            View all incidents
+            <ArrowRight size={16} />
+          </button>
         </div>
 
-        <div className="dashboard-table-wrapper">
-          <table className="dashboard-table">
-            <thead>
-              <tr>
-                <th>Location</th>
-                <th>Police Station</th>
-                <th>Violations</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {hotspots.map((spot, index) => (
-                <tr key={index}>
-                  <td>{spot.location}</td>
-                  <td>{spot.policeStation}</td>
-                  <td>{spot.violations}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <IncidentTable incidents={incidents} />
       </section>
     </main>
   );
