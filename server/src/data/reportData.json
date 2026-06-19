@@ -1,0 +1,527 @@
+{
+  "7d": {
+    "summary": {
+      "totalViolations": 286,
+      "averageImpactScore": 68,
+      "clearanceRate": 84,
+      "averageClearanceMinutes": 27,
+      "speedImprovementPercent": 42,
+      "criticalHotspots": 6
+    },
+    "trends": [
+      {
+        "label": "Mon",
+        "violations": 36,
+        "congestionScore": 61,
+        "clearedCases": 29
+      },
+      {
+        "label": "Tue",
+        "violations": 43,
+        "congestionScore": 67,
+        "clearedCases": 36
+      },
+      {
+        "label": "Wed",
+        "violations": 39,
+        "congestionScore": 64,
+        "clearedCases": 32
+      },
+      {
+        "label": "Thu",
+        "violations": 48,
+        "congestionScore": 72,
+        "clearedCases": 39
+      },
+      {
+        "label": "Fri",
+        "violations": 51,
+        "congestionScore": 76,
+        "clearedCases": 43
+      },
+      {
+        "label": "Sat",
+        "violations": 42,
+        "congestionScore": 69,
+        "clearedCases": 37
+      },
+      {
+        "label": "Sun",
+        "violations": 27,
+        "congestionScore": 55,
+        "clearedCases": 24
+      }
+    ],
+    "locations": [
+      {
+        "location": "Metro Station",
+        "violations": 58,
+        "impactScore": 91,
+        "averageClearanceMinutes": 25
+      },
+      {
+        "location": "Railway Station",
+        "violations": 52,
+        "impactScore": 88,
+        "averageClearanceMinutes": 30
+      },
+      {
+        "location": "Market Road",
+        "violations": 47,
+        "impactScore": 79,
+        "averageClearanceMinutes": 35
+      },
+      {
+        "location": "Hospital",
+        "violations": 38,
+        "impactScore": 72,
+        "averageClearanceMinutes": 20
+      },
+      {
+        "location": "School Zone",
+        "violations": 34,
+        "impactScore": 69,
+        "averageClearanceMinutes": 21
+      },
+      {
+        "location": "Mall Junction",
+        "violations": 28,
+        "impactScore": 56,
+        "averageClearanceMinutes": 29
+      }
+    ],
+    "hourlyViolations": [
+      {
+        "hour": "6 AM",
+        "violations": 8
+      },
+      {
+        "hour": "8 AM",
+        "violations": 22
+      },
+      {
+        "hour": "10 AM",
+        "violations": 16
+      },
+      {
+        "hour": "12 PM",
+        "violations": 19
+      },
+      {
+        "hour": "2 PM",
+        "violations": 24
+      },
+      {
+        "hour": "4 PM",
+        "violations": 31
+      },
+      {
+        "hour": "6 PM",
+        "violations": 49
+      },
+      {
+        "hour": "8 PM",
+        "violations": 42
+      },
+      {
+        "hour": "10 PM",
+        "violations": 18
+      }
+    ],
+    "priorityDistribution": [
+      {
+        "name": "Critical",
+        "value": 18
+      },
+      {
+        "name": "High",
+        "value": 34
+      },
+      {
+        "name": "Medium",
+        "value": 31
+      },
+      {
+        "name": "Low",
+        "value": 17
+      }
+    ],
+    "statusDistribution": [
+      {
+        "name": "Cleared",
+        "value": 84
+      },
+      {
+        "name": "In Progress",
+        "value": 10
+      },
+      {
+        "name": "Pending",
+        "value": 6
+      }
+    ],
+    "speedImprovement": [
+      {
+        "location": "Metro",
+        "before": 11,
+        "after": 31
+      },
+      {
+        "location": "Railway",
+        "before": 12,
+        "after": 29
+      },
+      {
+        "location": "Market",
+        "before": 15,
+        "after": 27
+      },
+      {
+        "location": "Hospital",
+        "before": 17,
+        "after": 26
+      },
+      {
+        "location": "School",
+        "before": 13,
+        "after": 23
+      }
+    ]
+  },
+  "30d": {
+    "summary": {
+      "totalViolations": 1248,
+      "averageImpactScore": 65,
+      "clearanceRate": 81,
+      "averageClearanceMinutes": 29,
+      "speedImprovementPercent": 39,
+      "criticalHotspots": 9
+    },
+    "trends": [
+      {
+        "label": "Week 1",
+        "violations": 286,
+        "congestionScore": 68,
+        "clearedCases": 240
+      },
+      {
+        "label": "Week 2",
+        "violations": 318,
+        "congestionScore": 71,
+        "clearedCases": 254
+      },
+      {
+        "label": "Week 3",
+        "violations": 337,
+        "congestionScore": 69,
+        "clearedCases": 270
+      },
+      {
+        "label": "Week 4",
+        "violations": 307,
+        "congestionScore": 62,
+        "clearedCases": 247
+      }
+    ],
+    "locations": [
+      {
+        "location": "Metro Station",
+        "violations": 58,
+        "impactScore": 91,
+        "averageClearanceMinutes": 25
+      },
+      {
+        "location": "Railway Station",
+        "violations": 52,
+        "impactScore": 88,
+        "averageClearanceMinutes": 30
+      },
+      {
+        "location": "Market Road",
+        "violations": 47,
+        "impactScore": 79,
+        "averageClearanceMinutes": 35
+      },
+      {
+        "location": "Hospital",
+        "violations": 38,
+        "impactScore": 72,
+        "averageClearanceMinutes": 20
+      },
+      {
+        "location": "School Zone",
+        "violations": 34,
+        "impactScore": 69,
+        "averageClearanceMinutes": 21
+      },
+      {
+        "location": "Mall Junction",
+        "violations": 28,
+        "impactScore": 56,
+        "averageClearanceMinutes": 29
+      }
+    ],
+    "hourlyViolations": [
+      {
+        "hour": "6 AM",
+        "violations": 8
+      },
+      {
+        "hour": "8 AM",
+        "violations": 22
+      },
+      {
+        "hour": "10 AM",
+        "violations": 16
+      },
+      {
+        "hour": "12 PM",
+        "violations": 19
+      },
+      {
+        "hour": "2 PM",
+        "violations": 24
+      },
+      {
+        "hour": "4 PM",
+        "violations": 31
+      },
+      {
+        "hour": "6 PM",
+        "violations": 49
+      },
+      {
+        "hour": "8 PM",
+        "violations": 42
+      },
+      {
+        "hour": "10 PM",
+        "violations": 18
+      }
+    ],
+    "priorityDistribution": [
+      {
+        "name": "Critical",
+        "value": 18
+      },
+      {
+        "name": "High",
+        "value": 34
+      },
+      {
+        "name": "Medium",
+        "value": 31
+      },
+      {
+        "name": "Low",
+        "value": 17
+      }
+    ],
+    "statusDistribution": [
+      {
+        "name": "Cleared",
+        "value": 84
+      },
+      {
+        "name": "In Progress",
+        "value": 10
+      },
+      {
+        "name": "Pending",
+        "value": 6
+      }
+    ],
+    "speedImprovement": [
+      {
+        "location": "Metro",
+        "before": 11,
+        "after": 31
+      },
+      {
+        "location": "Railway",
+        "before": 12,
+        "after": 29
+      },
+      {
+        "location": "Market",
+        "before": 15,
+        "after": 27
+      },
+      {
+        "location": "Hospital",
+        "before": 17,
+        "after": 26
+      },
+      {
+        "location": "School",
+        "before": 13,
+        "after": 23
+      }
+    ]
+  },
+  "90d": {
+    "summary": {
+      "totalViolations": 3612,
+      "averageImpactScore": 63,
+      "clearanceRate": 78,
+      "averageClearanceMinutes": 31,
+      "speedImprovementPercent": 37,
+      "criticalHotspots": 12
+    },
+    "trends": [
+      {
+        "label": "Month 1",
+        "violations": 1124,
+        "congestionScore": 67,
+        "clearedCases": 883
+      },
+      {
+        "label": "Month 2",
+        "violations": 1248,
+        "congestionScore": 65,
+        "clearedCases": 1011
+      },
+      {
+        "label": "Month 3",
+        "violations": 1240,
+        "congestionScore": 58,
+        "clearedCases": 923
+      }
+    ],
+    "locations": [
+      {
+        "location": "Metro Station",
+        "violations": 58,
+        "impactScore": 91,
+        "averageClearanceMinutes": 25
+      },
+      {
+        "location": "Railway Station",
+        "violations": 52,
+        "impactScore": 88,
+        "averageClearanceMinutes": 30
+      },
+      {
+        "location": "Market Road",
+        "violations": 47,
+        "impactScore": 79,
+        "averageClearanceMinutes": 35
+      },
+      {
+        "location": "Hospital",
+        "violations": 38,
+        "impactScore": 72,
+        "averageClearanceMinutes": 20
+      },
+      {
+        "location": "School Zone",
+        "violations": 34,
+        "impactScore": 69,
+        "averageClearanceMinutes": 21
+      },
+      {
+        "location": "Mall Junction",
+        "violations": 28,
+        "impactScore": 56,
+        "averageClearanceMinutes": 29
+      }
+    ],
+    "hourlyViolations": [
+      {
+        "hour": "6 AM",
+        "violations": 8
+      },
+      {
+        "hour": "8 AM",
+        "violations": 22
+      },
+      {
+        "hour": "10 AM",
+        "violations": 16
+      },
+      {
+        "hour": "12 PM",
+        "violations": 19
+      },
+      {
+        "hour": "2 PM",
+        "violations": 24
+      },
+      {
+        "hour": "4 PM",
+        "violations": 31
+      },
+      {
+        "hour": "6 PM",
+        "violations": 49
+      },
+      {
+        "hour": "8 PM",
+        "violations": 42
+      },
+      {
+        "hour": "10 PM",
+        "violations": 18
+      }
+    ],
+    "priorityDistribution": [
+      {
+        "name": "Critical",
+        "value": 18
+      },
+      {
+        "name": "High",
+        "value": 34
+      },
+      {
+        "name": "Medium",
+        "value": 31
+      },
+      {
+        "name": "Low",
+        "value": 17
+      }
+    ],
+    "statusDistribution": [
+      {
+        "name": "Cleared",
+        "value": 84
+      },
+      {
+        "name": "In Progress",
+        "value": 10
+      },
+      {
+        "name": "Pending",
+        "value": 6
+      }
+    ],
+    "speedImprovement": [
+      {
+        "location": "Metro",
+        "before": 11,
+        "after": 31
+      },
+      {
+        "location": "Railway",
+        "before": 12,
+        "after": 29
+      },
+      {
+        "location": "Market",
+        "before": 15,
+        "after": 27
+      },
+      {
+        "location": "Hospital",
+        "before": 17,
+        "after": 26
+      },
+      {
+        "location": "School",
+        "before": 13,
+        "after": 23
+      }
+    ]
+  }
+}

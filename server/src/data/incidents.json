@@ -1,0 +1,72 @@
+[
+  {
+    "id": "INC-001",
+    "location": "Central Metro Station",
+    "cameraId": "CAM-METRO-01",
+    "illegalVehicles": 7,
+    "laneBlockagePercent": 46,
+    "trafficDensityPercent": 89,
+    "baselineSpeed": 38,
+    "currentSpeed": 11,
+    "impactScore": 91,
+    "priority": "Critical",
+    "status": "Unresolved",
+    "detectedAt": "06:30 PM"
+  },
+  {
+    "id": "INC-002",
+    "location": "Commercial Market Road",
+    "cameraId": "CAM-MARKET-02",
+    "illegalVehicles": 5,
+    "laneBlockagePercent": 35,
+    "trafficDensityPercent": 78,
+    "baselineSpeed": 32,
+    "currentSpeed": 15,
+    "impactScore": 79,
+    "priority": "High",
+    "status": "In Progress",
+    "detectedAt": "05:55 PM"
+  },
+  {
+    "id": "INC-003",
+    "location": "Hospital Main Entrance",
+    "cameraId": "CAM-HOSPITAL-03",
+    "illegalVehicles": 3,
+    "laneBlockagePercent": 28,
+    "trafficDensityPercent": 67,
+    "baselineSpeed": 30,
+    "currentSpeed": 17,
+    "impactScore": 66,
+    "priority": "High",
+    "status": "Unresolved",
+    "detectedAt": "05:15 PM"
+  },
+  {
+    "id": "INC-004",
+    "location": "City Mall Junction",
+    "cameraId": "CAM-MALL-04",
+    "illegalVehicles": 2,
+    "laneBlockagePercent": 18,
+    "trafficDensityPercent": 51,
+    "baselineSpeed": 35,
+    "currentSpeed": 24,
+    "impactScore": 48,
+    "priority": "Medium",
+    "status": "In Progress",
+    "detectedAt": "04:40 PM"
+  },
+  {
+    "id": "INC-005",
+    "location": "Greenwood School Zone",
+    "cameraId": "CAM-SCHOOL-05",
+    "illegalVehicles": 1,
+    "laneBlockagePercent": 11,
+    "trafficDensityPercent": 35,
+    "baselineSpeed": 25,
+    "currentSpeed": 21,
+    "impactScore": 29,
+    "priority": "Low",
+    "status": "Cleared",
+    "detectedAt": "03:20 PM"
+  }
+]
