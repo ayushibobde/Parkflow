@@ -9,7 +9,6 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import Heatmap from "../pages/Heatmap";
 
 const navigationItems = [
   {

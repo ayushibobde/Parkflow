@@ -12,11 +12,12 @@ export interface EnforcementCase {
   location: string;
   zone: string;
   cameraId: string;
-
+junction_name?: string;
   priority: Priority;
   status: EnforcementStatus;
   impactScore: number;
-
+latitude?: number;
+  longitude?: number;
   illegalVehicles: number;
   laneBlockagePercent: number;
 
