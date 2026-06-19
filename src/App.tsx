@@ -1,22 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
-
-interface ComingSoonProps {
-  title: string;
-}
-
-function ComingSoon({ title }: ComingSoonProps) {
-  return (
-    <main className="coming-soon-page">
-      <div className="coming-soon-card">
-        <span>ParkFlow AI</span>
-        <h2>{title}</h2>
-        <p>This screen will be implemented in the next development step.</p>
-      </div>
-    </main>
-  );
-}
+import Analysis from "./pages/Analysis";
+import Hotspots from "./pages/Hotspots";
+import Enforcement from "./pages/Enforcement";
+import PatrolRoutes from "./pages/PatrolRoutes";
+import Reports from "./pages/Reports";
+import Heatmap from "./pages/Heatmap";
+import RiskAnalysis from "./pages/RiskAnalysis";
 
 function App() {
   return (
@@ -29,26 +20,34 @@ function App() {
 
           <Route
             path="/analysis"
-            element={<ComingSoon title="CCTV Analysis" />}
-          />
+            element={<Analysis />} />
 
           <Route
             path="/hotspots"
-            element={<ComingSoon title="Hotspot Intelligence" />}
+            element={<Hotspots />}
           />
 
           <Route
             path="/enforcement"
-            element={<ComingSoon title="Enforcement Planner" />}
+            element={<Enforcement/>}
           />
 
           <Route
             path="/routes"
-            element={<ComingSoon title="Patrol Routes" />}
+            element={<PatrolRoutes/>}
           />
 
-          <Route path="/reports" element={<ComingSoon title="Reports" />} />
+          <Route path="/reports" element={<Reports/>}
+          />
+          <Route
+    path="/heatmap"
+    element={<Heatmap />}
+  />
 
+  <Route
+    path="/risk-analysis"
+    element={<RiskAnalysis />}
+  />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
