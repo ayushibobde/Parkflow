@@ -1,13 +1,5 @@
-// import type { EnforcementCase, EnforcementStatus } from "../types/enforcement";
-// import type { Hotspot } from "../types/hotspot";
-// import type { Incident } from "../types/incident";
-// import type { PatrolRoute } from "../types/patrolRoute";
-// import type { AnalyticsReport, ReportPeriod } from "../types/report";
-// import type { TrafficScenario } from "../types/trafficScenario";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ??
-  "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 async function handleResponse<T>(
   response: Response,
